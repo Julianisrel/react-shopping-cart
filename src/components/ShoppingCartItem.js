@@ -1,16 +1,24 @@
 import React from 'react';
 
-const Item = props => {
+import CartContext from '../contexts/CartContext';
+
+const Item = (props) => {
+	const  {removeItem } = useContext(CartContext);
+	
+	 
 	return (
 		<div className="shopping-cart_item">
 			<img src={props.image} alt={`${props.title} book`} />
 
 
 			<div>
+				<div id="result">
 				<h1>{props.title}</h1>
 				<p>$ {props.price}</p>
-				<button>Remove from cart</button>
+				<button onClick={() => 
+					removeItem(props.item)  }> Remove from cart</button>
 			</div>
+		</div>
 		</div>
 	);
 };
